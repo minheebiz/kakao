@@ -1,0 +1,98 @@
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="initial-scale=1,minimum-scale=1, maximum-scale=1">
+<script type="text/javascript" src="http://www.highcharts.com/js/highstock.js"></script>
+<script type="text/javascript" src="http://www.highcharts.com/js/highcharts.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script type="text/javascript">
+var chart;
+$(document).ready(function() {
+    var width = $(document).width() - 20;
+    var height = $(document).height() - 20;
+    $("#container").css("width", width);
+    $("#container").css("height", height);
+    chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'container',
+            defaultSeriesType: 'column',
+            zoomType: 'xy'
+        },
+        title: {
+            text: 'Project wise Budget Estimation'
+        },
+        subtitle: {
+            text: 'Select area to zoom.Click Reset Zoom to reset selection'
+        },
+        
+        xAxis: {
+            categories: ['VGP resort <br/>in (USD)', 'Spec info city <br/>in (USD)', 'Balewadi <br/>in (USD)', 'WTC <br/>in (INR)', 'Vizag Homes <br/>in (INR)', 'Aditi farms <br/>in (INR)'],
+            min: 3
+
+        },
+        navigator: {
+            enabled: true,
+            
+        },
+
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Amount Distribution'
+            }
+        },
+        legend: {
+            shadow: true
+        },
+        tooltip: {
+            useHTML: true,
+            headerFormat: '<small>{point.key}</small><table>',
+            pointFormat: '<tr><td style="color: {series.color}">{series.name}:{point.y} </td>',
+            footerFormat: '</table>',
+            valueDecimals: 2,
+            crosshairs: [{
+                width: 1,
+                color: 'Gray'},
+            {
+                width: 1,
+                color: 'gray'}]
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0.5
+            }
+        },
+        series: [{
+            name: 'Capital',
+            data: [100000.00, 100000.00, 100000.00, 100000.00, 100000.00, 100000.00]},
+        {
+            name: 'Material',
+            data: [0.00, 4357498.00, 0.00, 986000.00, 89158220.00, 0.00]},
+        {
+            name: 'HR',
+            data: [36000000.00, 323360000.00, 80000.00, 5600000.00, 2769017840.00, 0.00]},
+        {
+            name: 'Equipment',
+            data: [4400000.00, 160000000.00, 8000.00, 880000.00, 910400000.00, 0.00]},
+        {
+            name: 'Petty Cash',
+            data: [10000.00, 10000.00, 10000.00, 100000.00, 1000.00, 10000.00]}]
+    });
+    $(window).bind("resize", resizeChart);
+});
+
+function resizeChart() {
+    var width = $(document).width() - 55;
+    var height = $(document).height() - 55;
+    $("#container").css("width", width);
+    $("#container").css("height", height);
+}
+</script>
+</head>
+<body>
+<div id="container" style="margin: 0 auto"></div>
+</body>
+<html>
